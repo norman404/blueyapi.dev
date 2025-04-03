@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="doc-container">
+    <h1>📘 Bluey API Documentation</h1>
+    <p>Welcome to the <strong>Bluey API</strong> documentation! This RESTful API allows you to explore detailed information about characters from the beloved animated series <em>Bluey</em>.</p>
+
+    <h2>📍 Base URL</h2>
+    <code>http://localhost:3000</code>
+    <p class="note">⚠️ Replace with your production URL when deploying.
+    </p>
+
+    <h2>🧩 Endpoints</h2>
+
+    <pre><code>curl http://localhost:3000/character
+curl http://localhost:3000/character/1</code></pre>
+
+    <h3>🔹 <code>GET /character</code></h3>
+    <p>Retrieve a list of all available characters.</p>
+    <h4>✅ Response</h4>
+    <pre><code>{`{
+  "response": {
+    "data": [{
+      "_id": 1,
+      "name": "Bluey Heeler",
+      "age": 6,
+      "breed": "Blue Heeler",
+      "sourceUrl": "https://example.com",
+      "imageUrl": "https://example.com/image.jpg",
+      "episode": ["Magic Xylophone"],
+      "minisodes": [],
+      "books": [],
+      "createdAt": "2023-01-01T00:00:00.000Z",
+      "updatedAt": "2023-01-05T00:00:00.000Z",
+      "url": "http://localhost:3000/characters/1"
+    }],
+    "count": 1,
+    "timestamp": "2025-03-31T15:13:29.407Z"
+  },
+  "error": null
+}`}</code></pre>
+
+    <h3>🔹 <code>GET /character/:id</code></h3>
+    <p>Retrieve a specific character by its ID.</p>
+
+    <h4>🔸 Parameters</h4>
+    <table>
+      <thead>
+        <tr><th>Param</th><th>Type</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>id</td><td>number</td><td>The ID of the character</td></tr>
+      </tbody>
+    </table>
+
+    <h4>✅ Response</h4>
+    <pre><code>{`{
+  "response": {
+    "data": {
+      "_id": 1,
+      "name": "Bluey Heeler",
+      "age": 6,
+      "breed": "Blue Heeler",
+      "sourceUrl": "https://example.com",
+      "imageUrl": "https://example.com/image.jpg",
+      "episode": ["Magic Xylophone"],
+      "minisodes": [],
+      "books": [],
+      "createdAt": "2023-01-01T00:00:00.000Z",
+      "updatedAt": "2023-01-05T00:00:00.000Z",
+      "url": "http://localhost:3000/characters/1"
+    },
+    "timestamp": "2025-03-31T12:00:00.000Z"
+  },
+  "error": null
+}`}</code></pre>
+
+    <h3>⚠️ Error Handling</h3>
+    <p>Errors are formatted uniformly with the following structure:</p>
+    <pre><code>{`{
+  "response": null,
+  "error": {
+    "message": "Character not found",
+    "stack": "...stack trace...",
+    "status": 404
+  }
+}`}</code></pre>
+    <p>All responses are wrapped using a global <strong>interceptor</strong>, ensuring consistent formatting for both success and error cases.</p>
+
+    <h2>🧪 Tech Stack</h2>
+    <ul>
+      <li><strong>NestJS</strong> for backend and routing.</li>
+      <li><strong>class-transformer</strong> for serialization (DTO).</li>
+      <li><strong>Interceptor</strong> for global response formatting.</li>
+      <li><strong>Astro</strong> for frontend documentation and playground.</li>
+    </ul>
+
+    <h2>📦 Future Improvements</h2>
+    <ul>
+      <li>Search and filter endpoints (<code>/characters?name=Bluey</code>)</li>
+      <li>Pagination support</li>
+      <li>Caching layer</li>
+      <li>Related resources (episodes, locations, etc.)</li>
+    </ul>
+
+    <h2>👨‍💻 Author</h2>
+    <p>Built with ❤️ by <strong>Norman Torres</strong> as a way to explore modern backend and frontend frameworks, and share something fun inspired by his son’s favorite show — Bluey.</p>
+
+    <h2>🗃️ License</h2>
+    <p>MIT</p>
+  </main>
+</Layout>
+
+<style>
+  .doc-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.7;
+  }
+
+  code {
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+
+  pre {
+    background: #1e1e1e;
+    color: #e5e7eb;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  th, td {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .note {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="about-container">
+    <h1>About</h1>
+
+    <section>
+      <h2>What is this?</h2>
+      <p>
+        This website provides a RESTful API interface to detailed data objects built around the Bluey universe. Inspired by the <a href="https://pokeapi.co" target="_blank">PokéAPI</a>, this project was created as a learning tool using <strong>NestJS</strong> for the backend and <strong>Astro</strong> for the frontend.
+      </p>
+      <p>
+        Bluey was chosen as the theme because my son loves the show, making it a fun and meaningful project to build.
+      </p>
+    </section>
+
+    <section>
+      <h2>What is an API?</h2>
+      <p>
+        An API (Application Programming Interface) allows developers to interact with data and functionality via standardized methods. In our case, we provide structured access to data on characters, episodes, and more from the Bluey universe.
+      </p>
+      <p>
+        A RESTful API follows conventions based on HTTP methods and provides a simple way to consume resources through URLs.
+      </p>
+    </section>
+
+    <section>
+      <h2>Why make another API?</h2>
+      <p>
+        Great question! Just like with Pokémon, there are scattered and incomplete resources about Bluey online. This API aims to centralize that information in one well-structured, reliable place.
+      </p>
+      <p>
+        It's also a great way to practice modern development, explore API design, and contribute something potentially useful for fans and developers.
+      </p>
+    </section>
+
+    <section>
+      <h2>What data do we provide?</h2>
+      <ul>
+        <li>Characters</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>The API is missing stuff!</h2>
+      <p>
+        We know! Feel free to open issues or contribute via our GitHub repository. We're constantly working on adding more content.
+      </p>
+    </section>
+
+    <section>
+      <h2>Who built this?</h2>
+      <p>
+        This project was started by <strong>Norman Torres</strong> as a personal project to explore modern frameworks and build something fun and useful. Inspired by his son and powered by the spirit of learning, this API is open for contribution.
+      </p>
+    </section>
+
+    <section>
+      <h2>Technology Stack</h2>
+      <ul>
+        <li><strong>NestJS</strong> - for the RESTful backend</li>
+        <li><strong>Astro</strong> - for the static frontend</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .about-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    line-height: 1.7;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+  }
+
+  a {
+    color: #0070f3;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

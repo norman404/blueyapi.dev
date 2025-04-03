@@ -1,11 +1,43 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ApiExplorer from '../components/ApiExplorer.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<section id="hero">
+			<h1>Bluey API</h1>
+			<p>The REST API based on Bluey characters</p>
+			<ApiExplorer />
+		</section>
+	</main>
 </Layout>
+
+<style>
+	#hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	h1 {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	#links {
+		display: flex;
+		gap: 1rem;
+	}
+
+	a {
+		text-decoration: none;
+		color: #0070f3;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+</style>

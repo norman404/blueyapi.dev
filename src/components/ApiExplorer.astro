@@ -1,0 +1,191 @@
+<div class="api-explorer">
+  <div class="window-header">
+    <div class="window-controls">
+      <span class="control red"></span>
+      <span class="control yellow"></span>
+      <span class="control green"></span>
+    </div>
+    <div class="window-title">Try me!</div>
+  </div>
+  
+  <div class="query-container">
+    <div class="url-bar">
+      <input 
+        type="text" 
+        id="api-url" 
+        class="url-input" 
+        value="http://localhost:3000/character"
+        placeholder="Enter API endpoint"
+      />
+      <button id="copy-btn" class="icon-button" title="Copy URL">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+      </button>
+      <button id="send-btn" class="send-button">send</button>
+    </div>
+    
+    <div class="response-container">
+      <pre id="response-area" class="response-area"><code></code></pre>
+    </div>
+  </div>
+</div>
+
+<script>
+  const apiUrlInput = document.getElementById('api-url');
+  const sendButton = document.getElementById('send-btn');
+  const copyButton = document.getElementById('copy-btn');
+  const responseArea = document.getElementById('response-area').querySelector('code');
+
+  sendButton.addEventListener('click', handleSendRequest);
+  copyButton.addEventListener('click', copyToClipboard);
+
+  async function handleSendRequest() {
+    const url = apiUrlInput.value.trim();
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Error ${response.status}: ${response.statusText}`);
+      const data = await response.json();
+      displayResponse(data);
+    } catch (error) {
+      displayResponse({ error: error.message });
+    }
+  }
+
+  function displayResponse(data) {
+    const formattedJson = JSON.stringify(data, null, 2);
+    responseArea.textContent = formattedJson;
+  }
+
+  function copyToClipboard() {
+    const textToCopy = apiUrlInput.value.trim();
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        copyButton.classList.add('copied');
+        setTimeout(() => copyButton.classList.remove('copied'), 1000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  }
+
+  // Ejecutar consulta al cargar la página
+  window.addEventListener('DOMContentLoaded', () => {
+    handleSendRequest();
+  });
+</script>
+
+<style>
+  .api-explorer {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+    border: 1px solid #e5e7eb;
+    background: white;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .window-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 8px;
+    margin-right: 16px;
+  }
+
+  .control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .red { background-color: #ff5f57; }
+  .yellow { background-color: #febc2e; }
+  .green { background-color: #28c840; }
+
+  .window-title {
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .query-container {
+    padding: 16px;
+  }
+
+  .url-bar {
+    display: flex;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  }
+
+  .url-input {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: none;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: monospace;
+    font-size: 14px;
+  }
+
+  .url-input:focus {
+    outline: none;
+  }
+
+  .icon-button {
+    background-color: #1e1e1e;
+    border: none;
+    color: #9ca3af;
+    padding: 0 12px;
+    cursor: pointer;
+    border-left: 1px solid #374151;
+  }
+
+  .icon-button:hover {
+    color: white;
+  }
+
+  .icon-button.copied {
+    color: #10b981;
+  }
+
+  .send-button {
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-weight: 500;
+    border-left: 1px solid #374151;
+  }
+
+  .send-button:hover {
+    background-color: #2d3748;
+  }
+
+  .response-container {
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .response-area {
+    margin: 0;
+    padding: 16px;
+    color: #e5e7eb;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+</style>

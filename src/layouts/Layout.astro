@@ -1,3 +1,8 @@
+---
+import Header from "../components/header.astro"
+import Footer from "../components/footer.astro"
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,10 +10,14 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>BlueyApi</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<div class="container">
+			<slot />
+		</div>
+		<Footer />
 	</body>
 </html>
 
@@ -18,5 +27,14 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+	}
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 	}
 </style>
