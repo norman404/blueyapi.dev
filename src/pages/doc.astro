@@ -8,16 +8,16 @@ import Layout from '../layouts/Layout.astro';
     <p>Welcome to the <strong>Bluey API</strong> documentation! This RESTful API allows you to explore detailed information about characters from the beloved animated series <em>Bluey</em>.</p>
 
     <h2>📍 Base URL</h2>
-    <code>http://localhost:3000</code>
+    <code>https://api.blueyapi.dev</code>
     <p class="note">⚠️ Replace with your production URL when deploying.
     </p>
 
     <h2>🧩 Endpoints</h2>
 
-    <pre><code>curl http://localhost:3000/character
-curl http://localhost:3000/character/1</code></pre>
+    <pre><code>curl https://api.blueyapi.dev/characters
+curl https://api.blueyapi.dev/characters/1</code></pre>
 
-    <h3>🔹 <code>GET /character</code></h3>
+    <h3>🔹 <code>GET /characters</code></h3>
     <p>Retrieve a list of all available characters.</p>
     <h4>✅ Response</h4>
     <pre><code>{`{
@@ -34,7 +34,7 @@ curl http://localhost:3000/character/1</code></pre>
       "books": [],
       "createdAt": "2023-01-01T00:00:00.000Z",
       "updatedAt": "2023-01-05T00:00:00.000Z",
-      "url": "http://localhost:3000/characters/1"
+      "url": "https://api.blueyapi.dev/characters/1"
     }],
     "count": 1,
     "timestamp": "2025-03-31T15:13:29.407Z"
@@ -42,7 +42,7 @@ curl http://localhost:3000/character/1</code></pre>
   "error": null
 }`}</code></pre>
 
-    <h3>🔹 <code>GET /character/:id</code></h3>
+    <h3>🔹 <code>GET /characters/:id</code></h3>
     <p>Retrieve a specific character by its ID.</p>
 
     <h4>🔸 Parameters</h4>
@@ -70,7 +70,7 @@ curl http://localhost:3000/character/1</code></pre>
       "books": [],
       "createdAt": "2023-01-01T00:00:00.000Z",
       "updatedAt": "2023-01-05T00:00:00.000Z",
-      "url": "http://localhost:3000/characters/1"
+      "url": "https://api.blueyapi.dev/characters/1"
     },
     "timestamp": "2025-03-31T12:00:00.000Z"
   },
