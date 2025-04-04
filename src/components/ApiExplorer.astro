@@ -188,4 +188,43 @@
     line-height: 1.5;
     white-space: pre-wrap;
   }
+  @media (max-width: 640px) {
+  .api-explorer {
+    border-radius: 0;
+    margin: 1rem;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .window-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .url-bar {
+    flex-direction: column;
+  }
+
+  .url-input {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .icon-button,
+  .send-button {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #374151;
+    padding: 10px 12px;
+    text-align: left;
+  }
+
+  .send-button {
+    font-size: 14px;
+  }
+
+  .response-container {
+    max-height: 300px;
+  }
+}
 </style>
