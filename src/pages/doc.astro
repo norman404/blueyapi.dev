@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
     <p>Welcome to the <strong>Bluey API</strong> documentation! This RESTful API allows you to explore detailed information about characters from the beloved animated series <em>Bluey</em>.</p>
 
     <h2>📍 Base URL</h2>
-    <pre></pre><code>https://api.blueyapi.dev</code></pre>
+    </pre><code>https://api.blueyapi.dev</code>
     </p>
 
     <h2>🧩 Endpoints</h2>
@@ -150,5 +150,11 @@ curl https://api.blueyapi.dev/characters/1</code></pre>
     color: #9ca3af;
     font-size: 0.9rem;
     margin-top: 0.5rem;
+  }
+  @media screen and (max-width: 768px) {
+    .doc-container {
+      max-width: 85%;
+    }
+    
   }
 </style>
